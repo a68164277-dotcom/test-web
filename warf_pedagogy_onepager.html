@@ -1,0 +1,197 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;700&family=Prompt:wght@600;700&family=DM+Sans:wght@400;500&family=Syne:wght@700;800&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.page{background:#fff;max-width:680px;font-family:'Sarabun',sans-serif}
+
+.header{background:#2C2C2A;padding:30px 32px 24px;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;right:-40px;top:-40px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.04)}
+.header::after{content:'';position:absolute;left:60px;bottom:-80px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.03)}
+.supertag{display:inline-block;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);font-size:10px;padding:3px 10px;border-radius:20px;margin-bottom:12px;letter-spacing:1px;font-family:'DM Sans',sans-serif;text-transform:uppercase}
+.header h1{font-family:'Prompt',sans-serif;color:#fff;font-size:22px;font-weight:700;line-height:1.3;margin-bottom:8px}
+.header h1 span{color:#9FE1CB}
+.header .subtitle{color:rgba(255,255,255,0.7);font-size:12.5px;line-height:1.65}
+
+.body{padding:26px 32px}
+
+.intro-block{margin-bottom:26px}
+.intro-block p{font-size:13px;color:#444441;line-height:1.75}
+.intro-block p strong{color:#2C2C2A;font-weight:500}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+
+.framework-card{border-radius:12px;overflow:hidden}
+.fc-header{padding:16px 18px 12px}
+.fc-header .fc-tag{font-size:9px;letter-spacing:1.2px;text-transform:uppercase;font-weight:700;margin-bottom:6px;opacity:0.75}
+.fc-header h2{font-family:'Prompt',sans-serif;font-size:15px;font-weight:700;line-height:1.25;margin-bottom:4px}
+.fc-header .fc-sub{font-size:11px;opacity:0.75;line-height:1.4}
+.fc-body{padding:14px 18px 16px}
+.fc-body .why-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:700;margin-bottom:8px}
+.fc-body ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.fc-body ul li{font-size:11.5px;line-height:1.5;padding-left:14px;position:relative}
+.fc-body ul li::before{content:'→';position:absolute;left:0;font-size:10px;top:1px}
+
+.pbe-card .fc-header{background:#0F6E56}
+.pbe-card .fc-header *{color:#E1F5EE}
+.pbe-card .fc-body{background:#E1F5EE}
+.pbe-card .fc-body .why-label{color:#0F6E56}
+.pbe-card .fc-body ul li{color:#085041}
+.pbe-card .fc-body ul li::before{color:#1D9E75}
+
+.kolb-card .fc-header{background:#185FA5}
+.kolb-card .fc-header *{color:#E6F1FB}
+.kolb-card .fc-body{background:#E6F1FB}
+.kolb-card .fc-body .why-label{color:#185FA5}
+.kolb-card .fc-body ul li{color:#0C447C}
+.kolb-card .fc-body ul li::before{color:#378ADD}
+
+.cycle-section{margin-bottom:24px}
+.cycle-label{font-size:10px;letter-spacing:1.5px;color:#888780;font-weight:500;text-transform:uppercase;margin-bottom:14px}
+.cycle-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.cycle-step{text-align:center;padding:12px 8px}
+.cycle-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin:0 auto 8px;font-family:'Prompt',sans-serif}
+.cycle-step h4{font-family:'Prompt',sans-serif;font-size:11px;font-weight:600;margin-bottom:4px}
+.cycle-step p{font-size:10.5px;color:#5F5E5A;line-height:1.45}
+.c1 .cycle-num{background:#FAEEDA;color:#633806}
+.c1 h4{color:#854F0B}
+.c2 .cycle-num{background:#EAF3DE;color:#27500A}
+.c2 h4{color:#3B6D11}
+.c3 .cycle-num{background:#E6F1FB;color:#0C447C}
+.c3 h4{color:#185FA5}
+.c4 .cycle-num{background:#EEEDFE;color:#3C3489}
+.c4 h4{color:#534AB7}
+
+.arrow-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:6px}
+.arrow-cell{text-align:center;font-size:13px;color:#B4B2A9}
+
+.warf-bar{background:#F1EFE8;border-radius:10px;padding:16px 20px;margin-bottom:20px}
+.warf-bar-label{font-size:10px;letter-spacing:1.5px;color:#888780;font-weight:500;text-transform:uppercase;margin-bottom:12px}
+.warf-activities{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.wa-item{background:#fff;border:0.5px solid #D3D1C7;border-radius:8px;padding:10px 12px}
+.wa-item .wa-group{font-size:9px;letter-spacing:0.8px;text-transform:uppercase;color:#888780;margin-bottom:4px}
+.wa-item .wa-name{font-family:'Prompt',sans-serif;font-size:11.5px;font-weight:600;color:#2C2C2A;margin-bottom:3px}
+.wa-item .wa-cycle{font-size:10px;color:#5F5E5A}
+
+.footer{border-top:0.5px solid #D3D1C7;padding-top:16px;display:flex;justify-content:space-between;align-items:center}
+.warf-logo{font-family:'Prompt',sans-serif;font-size:13px;font-weight:700;color:#1D9E75}
+.warf-sub{font-size:10px;color:#888780}
+.footer-right{font-size:11px;color:#888780;text-align:right;line-height:1.5}
+</style>
+
+<div class="page">
+  <div class="header">
+    <div class="supertag">WARF Ranong · Our Pedagogy</div>
+    <h1>ทำไมเด็กถึงเรียนรู้ได้ดีที่สุด<br><span>เมื่อสถานที่จริงคือห้องเรียน</span></h1>
+    <div class="subtitle">ทุกกิจกรรมของ WARF ออกแบบบนฐานทฤษฎีการศึกษาระดับสากล<br>เพื่อให้การเรียนรู้ที่เกิดขึ้นวันนั้น ติดตัวเด็กไปตลอดชีวิต</div>
+  </div>
+
+  <div class="body">
+    <div class="intro-block">
+      <p>การวิจัยด้านจิตวิทยาการศึกษาพบว่าเด็กจดจำสิ่งที่ <strong>ลงมือทำด้วยตัวเอง</strong> ได้มากกว่าการฟังบรรยายถึง <strong>75%</strong> และการเรียนรู้ที่ผูกกับ <strong>สถานที่และบริบทจริง</strong> สร้างการเชื่อมโยงในสมองที่แน่นแฟ้นและยาวนานกว่าห้องเรียนปกติ ทั้งสองหลักการนี้คือรากฐานของทุกกิจกรรมที่ WARF ออกแบบมาให้ลูกของคุณ</p>
+    </div>
+
+    <div class="two-col">
+      <div class="framework-card pbe-card">
+        <div class="fc-header">
+          <div class="fc-tag">Framework 1</div>
+          <h2>Place-Based<br>Education (PBE)</h2>
+          <div class="fc-sub">David Sobel, 1996 · ใช้ในโรงเรียนชั้นนำทั่วโลก</div>
+        </div>
+        <div class="fc-body">
+          <div class="why-label">ทำไมถึงสำคัญ</div>
+          <ul>
+            <li>เด็กเรียนรู้จากสิ่งที่มีความหมายกับตัวเองและชุมชน ไม่ใช่ตัวอย่างในตำรา</li>
+            <li>การเชื่อมโยงกับท้องถิ่นสร้าง "sense of place" ที่กลายเป็นรากของจิตสำนึกสิ่งแวดล้อม</li>
+            <li>นักเรียนมีแรงจูงใจสูงขึ้นเมื่อปัญหาที่เรียนคือปัญหาจริงในพื้นที่</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="framework-card kolb-card">
+        <div class="fc-header">
+          <div class="fc-tag">Framework 2</div>
+          <h2>Experiential<br>Learning — Kolb</h2>
+          <div class="fc-sub">David Kolb, 1984 · มาตรฐาน IB และ CAS Worldwide</div>
+        </div>
+        <div class="fc-body">
+          <div class="why-label">ทำไมถึงสำคัญ</div>
+          <ul>
+            <li>การเรียนรู้ที่สมบูรณ์ต้องผ่าน 4 ขั้น ไม่ใช่แค่ "รับข้อมูล"</li>
+            <li>เด็กที่ผ่านวงจร Kolb พัฒนา critical thinking และ problem-solving ได้เร็วกว่า</li>
+            <li>เป็นพื้นฐานของการศึกษาแบบ IB, Project-Based Learning และ CAS</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="cycle-section">
+      <div class="cycle-label">วงจร Kolb ในทุกกิจกรรมของ WARF</div>
+      <div class="cycle-row">
+        <div class="cycle-step c1">
+          <div class="cycle-num">1</div>
+          <h4>Concrete Experience</h4>
+          <p>ลงมือทำจริง เช่น วิเคราะห์มูล ฝึก AI ประเมินสัตว์ป่า</p>
+        </div>
+        <div class="cycle-step c2">
+          <div class="cycle-num">2</div>
+          <h4>Reflective Observation</h4>
+          <p>ตั้งคำถาม สะท้อนคิด อะไรที่สังเกตได้ อะไรที่แปลกใจ</p>
+        </div>
+        <div class="cycle-step c3">
+          <div class="cycle-num">3</div>
+          <h4>Abstract Conceptualisation</h4>
+          <p>เชื่อมกับหลักการ เช่น กฎหมาย ระบบนิเวศ ตลาดคาร์บอน</p>
+        </div>
+        <div class="cycle-step c4">
+          <div class="cycle-num">4</div>
+          <h4>Active Experimentation</h4>
+          <p>นำไปใช้ต่อ เช่น เสนอแผน สร้างแคมเปญ ออกแบบโซลูชัน</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="warf-bar">
+      <div class="warf-bar-label">ตัวอย่างกิจกรรมของ WARF ที่ขับเคลื่อนด้วยทั้งสองทฤษฎี</div>
+      <div class="warf-activities">
+        <div class="wa-item">
+          <div class="wa-group">ประถมไทย</div>
+          <div class="wa-name">Animal ER</div>
+          <div class="wa-cycle">สถานที่จริง + ลงมือตัดสินใจ</div>
+        </div>
+        <div class="wa-item">
+          <div class="wa-group">มัธยมไทย</div>
+          <div class="wa-name">Wildlife Court</div>
+          <div class="wa-cycle">Case จริง + วิเคราะห์เชิงระบบ</div>
+        </div>
+        <div class="wa-item">
+          <div class="wa-group">Int'l Secondary</div>
+          <div class="wa-name">Release Decision</div>
+          <div class="wa-cycle">Data จริง + CAS Portfolio</div>
+        </div>
+        <div class="wa-item">
+          <div class="wa-group">Int'l Secondary</div>
+          <div class="wa-name">Blue Carbon Market</div>
+          <div class="wa-cycle">ป่าชายเลนจริง + มาตรฐาน Verra</div>
+        </div>
+        <div class="wa-item">
+          <div class="wa-group">Int'l Primary</div>
+          <div class="wa-name">Sound Map</div>
+          <div class="wa-cycle">ป่าจริง + sensory learning</div>
+        </div>
+        <div class="wa-item">
+          <div class="wa-group">ครอบครัว</div>
+          <div class="wa-name">Smart Nest Box</div>
+          <div class="wa-cycle">ลงมือสร้าง + ต่อยอดที่บ้าน</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>
+        <div class="warf-logo">WARF Ranong</div>
+        <div class="warf-sub">Wild Animal Rescue Foundation of Thailand · Ban Thale Nok</div>
+      </div>
+      <div class="footer-right">ออกแบบโดยทีม WARF<br>สอบถามโปรแกรมการศึกษา: warf.thailand@gmail.com</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;700&family=Prompt:wght@600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Sarabun',sans-serif}
+.page{background:#fff;max-width:680px;padding:0}
+.header{background:#1D9E75;padding:28px 32px 22px;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.07)}
+.header::after{content:'';position:absolute;right:40px;bottom:-60px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,0.05)}
+.tag{display:inline-block;background:rgba(255,255,255,0.2);color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;margin-bottom:10px;font-family:'Sarabun',sans-serif;letter-spacing:0.5px}
+.header h1{font-family:'Prompt',sans-serif;color:#fff;font-size:26px;font-weight:700;line-height:1.2;margin-bottom:6px}
+.header p{color:rgba(255,255,255,0.85);font-size:13px;line-height:1.6}
+.age-badge{display:inline-block;background:#fff;color:#0F6E56;font-size:12px;font-weight:700;padding:4px 14px;border-radius:20px;margin-top:12px;font-family:'Prompt',sans-serif}
+.body{padding:24px 32px}
+.section-label{font-size:10px;letter-spacing:1.5px;color:#888780;font-weight:500;text-transform:uppercase;margin-bottom:12px;font-family:'Sarabun',sans-serif}
+.activity-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.activity-card{border:0.5px solid #D3D1C7;border-radius:10px;padding:14px 16px;background:#F1EFE8}
+.activity-card .icon{font-size:22px;margin-bottom:8px}
+.activity-card h3{font-family:'Prompt',sans-serif;font-size:13px;font-weight:600;color:#2C2C2A;margin-bottom:5px}
+.activity-card p{font-size:11.5px;color:#5F5E5A;line-height:1.55}
+.theory-box{background:#EAF3DE;border-radius:10px;padding:16px 20px;margin-bottom:20px;border-left:3px solid #639922}
+.theory-box h4{font-family:'Prompt',sans-serif;font-size:12px;font-weight:600;color:#3B6D11;margin-bottom:10px;letter-spacing:0.3px}
+.theory-row{display:flex;gap:12px}
+.theory-item{flex:1}
+.theory-item .theory-name{font-size:11px;font-weight:700;color:#3B6D11;margin-bottom:3px}
+.theory-item p{font-size:11px;color:#27500A;line-height:1.5}
+.outcomes{margin-bottom:20px}
+.outcome-list{display:flex;flex-direction:column;gap:7px}
+.outcome-item{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:#444441}
+.dot{width:7px;height:7px;border-radius:50%;background:#1D9E75;flex-shrink:0;margin-top:4px}
+.footer{border-top:0.5px solid #D3D1C7;padding-top:16px;display:flex;justify-content:space-between;align-items:center}
+.warf-logo{font-family:'Prompt',sans-serif;font-size:13px;font-weight:700;color:#1D9E75}
+.warf-sub{font-size:10px;color:#888780}
+.price-tag{background:#1D9E75;color:#fff;font-size:12px;font-weight:600;padding:6px 16px;border-radius:20px;font-family:'Prompt',sans-serif}
+</style>
+<div class="page">
+  <div class="header">
+    <div class="tag">WARF Ranong · Day Program</div>
+    <h1>นักสืบสัตว์ป่า<br>Wildlife Investigator</h1>
+    <p>สัมผัสวิทยาศาสตร์จริงในศูนย์ฟื้นฟูสัตว์ป่าอันดามัน<br>ผ่านการลงมือทำที่หาไม่ได้จากห้องเรียนทั่วไป</p>
+    <div class="age-badge">นักเรียนไทย ประถมปลาย (ป.4–6)</div>
+  </div>
+  <div class="body">
+    <div class="section-label">กิจกรรมหลัก</div>
+    <div class="activity-grid">
+      <div class="activity-card">
+        <div class="icon">🚨</div>
+        <h3>Animal ER</h3>
+        <p>จำลองห้องฉุกเฉินสัตว์ป่า รับบทเป็นทีมกู้ชีพ ตัดสินใจเหมือนหมอจริง</p>
+      </div>
+      <div class="activity-card">
+        <div class="icon">🔍</div>
+        <h3>Poop Detective</h3>
+        <p>วิเคราะห์มูลสัตว์จริง บอกได้ว่ากินอะไร สุขภาพเป็นอย่างไร ถูกเลี้ยงผิดปกติไหม</p>
+      </div>
+      <div class="activity-card">
+        <div class="icon">🍽️</div>
+        <h3>Kitchen for Wildlife</h3>
+        <p>ทำ Enrichment ซ่อนอาหารให้สัตว์ในศูนย์ฟื้นฟู เรียนรู้พฤติกรรมการกิน</p>
+      </div>
+      <div class="activity-card">
+        <div class="icon">🌱</div>
+        <h3>Drone Re-Seed</h3>
+        <p>ออกแบบ Seed Pod และใช้โดรนปล่อยในพื้นที่ฟื้นฟูป่า เรียนรู้ Nature-tech</p>
+      </div>
+    </div>
+    <div class="theory-box">
+      <h4>รากฐานการเรียนรู้ที่อยู่เบื้องหลัง</h4>
+      <div class="theory-row">
+        <div class="theory-item">
+          <div class="theory-name">Place-Based Education (PBE)</div>
+          <p>ป่าชายเลนและศูนย์ฟื้นฟูคือห้องเรียน ความรู้เกิดจากสถานที่จริง ไม่ใช่ตำรา</p>
+        </div>
+        <div class="theory-item">
+          <div class="theory-name">Experiential Learning — Kolb</div>
+          <p>สัมผัส → สะท้อนคิด → สรุปหลักการ → นำไปใช้จริง ครบ 4 ขั้นในวันเดียว</p>
+        </div>
+      </div>
+    </div>
+    <div class="outcomes">
+      <div class="section-label">สิ่งที่เด็กจะได้กลับบ้าน</div>
+      <div class="outcome-list">
+        <div class="outcome-item"><div class="dot"></div><span>เข้าใจชีววิทยาและนิเวศวิทยาผ่านประสบการณ์ตรง ไม่ใช่การท่อง</span></div>
+        <div class="outcome-item"><div class="dot"></div><span>ฝึกทักษะการสังเกต ตั้งสมมติฐาน และสรุปผลแบบนักวิทยาศาสตร์</span></div>
+        <div class="outcome-item"><div class="dot"></div><span>ปลูกฝังความเห็นอกเห็นใจต่อสัตว์ป่าและธรรมชาติ</span></div>
+        <div class="outcome-item"><div class="dot"></div><span>เกียรติบัตร + รายงานการเรียนรู้ส่งกลับโรงเรียน</span></div>
+      </div>
+    </div>
+    <div class="footer">
+      <div>
+        <div class="warf-logo">WARF Ranong</div>
+        <div class="warf-sub">Wild Animal Rescue Foundation of Thailand · Ban Thale Nok</div>
+      </div>
+      <div class="price-tag">บริจาค 500–800 บาท/คน</div>
+    </div>
+  </div>
+</div>

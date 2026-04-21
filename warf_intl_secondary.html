@@ -1,0 +1,102 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Syne:wght@700;800&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.page{background:#fff;max-width:680px}
+.header{background:#3B6D11;padding:28px 32px 22px;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;right:-20px;top:-60px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.06)}
+.tag{display:inline-block;background:rgba(255,255,255,0.2);color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;margin-bottom:10px;letter-spacing:0.5px;font-family:'DM Sans',sans-serif}
+.header h1{font-family:'Syne',sans-serif;color:#fff;font-size:24px;font-weight:800;line-height:1.2;margin-bottom:6px}
+.header p{color:rgba(255,255,255,0.85);font-size:13px;line-height:1.6;font-family:'DM Sans',sans-serif}
+.age-badge{display:inline-block;background:#fff;color:#3B6D11;font-size:12px;font-weight:700;padding:4px 14px;border-radius:20px;margin-top:12px;font-family:'Syne',sans-serif}
+.body{padding:24px 32px;font-family:'DM Sans',sans-serif}
+.section-label{font-size:10px;letter-spacing:1.5px;color:#888780;font-weight:500;text-transform:uppercase;margin-bottom:12px}
+.activity-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.activity-card{border:0.5px solid #C0DD97;border-radius:10px;padding:14px 16px;background:#EAF3DE}
+.activity-card h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#27500A;margin-bottom:5px}
+.activity-card p{font-size:11.5px;color:#3B6D11;line-height:1.55}
+.activity-card .icon{font-size:20px;margin-bottom:8px}
+.cas-bar{background:#27500A;border-radius:8px;padding:10px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.cas-bar p{font-size:12px;color:#C0DD97;line-height:1.5}
+.cas-badge{background:#639922;color:#EAF3DE;font-size:10px;font-weight:700;padding:3px 10px;border-radius:12px;white-space:nowrap;font-family:'Syne',sans-serif}
+.theory-box{background:#EAF3DE;border-radius:10px;padding:16px 20px;margin-bottom:20px;border-left:3px solid #639922}
+.theory-box h4{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:#27500A;margin-bottom:10px}
+.theory-row{display:flex;gap:12px}
+.theory-item{flex:1}
+.theory-item .theory-name{font-size:11px;font-weight:500;color:#27500A;margin-bottom:3px}
+.theory-item p{font-size:11px;color:#3B6D11;line-height:1.5}
+.outcomes{margin-bottom:20px}
+.outcome-list{display:flex;flex-direction:column;gap:7px}
+.outcome-item{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:#444441}
+.dot{width:7px;height:7px;border-radius:50%;background:#3B6D11;flex-shrink:0;margin-top:4px}
+.footer{border-top:0.5px solid #D3D1C7;padding-top:16px;display:flex;justify-content:space-between;align-items:center}
+.warf-logo{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#3B6D11}
+.warf-sub{font-size:10px;color:#888780}
+.price-tag{background:#3B6D11;color:#fff;font-size:12px;font-weight:500;padding:6px 16px;border-radius:20px}
+</style>
+<div class="page">
+  <div class="header">
+    <div class="tag">WARF Ranong · International School Day Program</div>
+    <h1>Conservation Science in Action<br>Release Decision & Beyond</h1>
+    <p>Work with real data, real vets, and real conservation dilemmas.<br>Designed for IB, CAS, and Global Citizenship portfolios.</p>
+    <div class="age-badge">International Secondary (Ages 13–18)</div>
+  </div>
+  <div class="body">
+    <div class="section-label">Core Activities</div>
+    <div class="activity-grid">
+      <div class="activity-card">
+        <div class="icon">🦜</div>
+        <h3>Release Decision</h3>
+        <p>Use real vet data to debate and vote whether a live animal is ready for release. Vet team gives real-time feedback on your reasoning.</p>
+      </div>
+      <div class="activity-card">
+        <div class="icon">💰</div>
+        <h3>Follow the Money</h3>
+        <p>Map the illegal wildlife trade supply chain using real case data from southern Thailand. Find the weak links and propose solutions.</p>
+      </div>
+      <div class="activity-card">
+        <div class="icon">🌊</div>
+        <h3>Blue Carbon Stock Market</h3>
+        <p>Survey real mangrove trees, calculate carbon sequestration, and convert to Carbon Credits — linked to Verra and T-VER standards.</p>
+      </div>
+      <div class="activity-card">
+        <div class="icon">🤖</div>
+        <h3>AI Wildlife Patrol</h3>
+        <p>Train a Teachable Machine model on real camera trap images to distinguish wildlife, humans, and poachers. Build actual AI conservation tools.</p>
+      </div>
+    </div>
+    <div class="cas-bar">
+      <div class="cas-badge">IB · CAS · Service Learning</div>
+      <p>All activities generate documented outputs suitable for CAS portfolios, IB Extended Essay references, and school ESG reporting.</p>
+    </div>
+    <div class="theory-box">
+      <h4>Learning Frameworks</h4>
+      <div class="theory-row">
+        <div class="theory-item">
+          <div class="theory-name">Place-Based Education (PBE)</div>
+          <p>The Andaman coastline and WARF's active caseload are the curriculum. Every problem is real, local, and consequential.</p>
+        </div>
+        <div class="theory-item">
+          <div class="theory-name">Experiential Learning — Kolb's Cycle</div>
+          <p>Field data collection → Critical analysis → Systems thinking → Proposed interventions. Mirrors the professional conservation workflow.</p>
+        </div>
+      </div>
+    </div>
+    <div class="outcomes">
+      <div class="section-label">What students take home</div>
+      <div class="outcome-list">
+        <div class="outcome-item"><div class="dot"></div><span>Real conservation science methodology applicable to future academic work</span></div>
+        <div class="outcome-item"><div class="dot"></div><span>Understanding of global frameworks: carbon markets, wildlife law, AI in conservation</span></div>
+        <div class="outcome-item"><div class="dot"></div><span>Documented project outputs for CAS / service learning portfolio</span></div>
+        <div class="outcome-item"><div class="dot"></div><span>School impact report for ESG and sustainability documentation</span></div>
+      </div>
+    </div>
+    <div class="footer">
+      <div>
+        <div class="warf-logo">WARF Ranong</div>
+        <div class="warf-sub">Wild Animal Rescue Foundation of Thailand · Ban Thale Nok</div>
+      </div>
+      <div class="price-tag">Donation: 2,000–3,000 THB/student</div>
+    </div>
+  </div>
+</div>

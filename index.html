@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WARF Ranong — Educational Programs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;700&family=Prompt:wght@600;700&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1D9E75;--green-dark:#0F6E56;--green-light:#E1F5EE;
+  --blue:#185FA5;--blue-dark:#0C447C;--blue-light:#E6F1FB;
+  --purple:#534AB7;--purple-dark:#3C3489;--purple-light:#EEEDFE;
+  --amber:#BA7517;--amber-dark:#633806;--amber-light:#FAEEDA;
+  --forest:#3B6D11;--forest-dark:#27500A;--forest-light:#EAF3DE;
+  --charcoal:#2C2C2A;--mid:#888780;--border:#D3D1C7;--bg:#F1EFE8;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#fff;color:#2C2C2A;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);border-bottom:0.5px solid var(--border);padding:0 32px}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:0;height:56px}
+.nav-logo{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:var(--green);margin-right:32px;white-space:nowrap;flex-shrink:0}
+.nav-links{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-btn{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:var(--mid);background:none;border:none;padding:6px 12px;border-radius:20px;cursor:pointer;white-space:nowrap;transition:all .2s;flex-shrink:0}
+.nav-btn:hover{color:var(--charcoal);background:var(--bg)}
+.nav-btn.active{color:#fff;background:var(--charcoal)}
+
+/* HERO */
+.hero{background:var(--charcoal);padding:120px 32px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-100px;top:-100px;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,0.03)}
+.hero::after{content:'';position:absolute;left:-80px;bottom:-120px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.02)}
+.hero-tag{display:inline-block;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);font-size:11px;padding:4px 14px;border-radius:20px;margin-bottom:20px;letter-spacing:1.2px;text-transform:uppercase}
+.hero h1{font-family:'Syne',sans-serif;color:#fff;font-size:clamp(28px,5vw,52px);font-weight:800;line-height:1.15;margin-bottom:16px}
+.hero h1 em{color:#9FE1CB;font-style:normal}
+.hero p{color:rgba(255,255,255,0.65);font-size:16px;line-height:1.7;max-width:560px;margin:0 auto 36px}
+.hero-cards{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.hero-pill{font-size:12px;padding:8px 18px;border-radius:20px;cursor:pointer;border:0.5px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.8);transition:all .2s;background:rgba(255,255,255,0.07)}
+.hero-pill:hover{background:rgba(255,255,255,0.15);color:#fff}
+
+/* SECTIONS */
+.section{max-width:900px;margin:0 auto;padding:80px 32px}
+.section-header{margin-bottom:48px}
+.section-supertag{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);font-weight:500;margin-bottom:12px}
+.section-header h2{font-family:'Syne',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:800;line-height:1.2;margin-bottom:10px}
+.section-header p{font-size:14px;color:#5F5E5A;line-height:1.7;max-width:580px}
+
+/* PROGRAM CARDS */
+.program-page{min-height:auto;border-top:0.5px solid var(--border)}
+.prog-header{padding:48px 32px 36px;position:relative;overflow:hidden}
+.prog-header::before{content:'';position:absolute;right:-40px;top:-40px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.07)}
+.prog-tag{display:inline-block;background:rgba(255,255,255,0.2);color:#fff;font-size:10px;padding:3px 12px;border-radius:20px;margin-bottom:12px;letter-spacing:0.8px;font-family:'DM Sans',sans-serif}
+.prog-header h2{font-family:'Syne',sans-serif;color:#fff;font-size:clamp(20px,3vw,28px);font-weight:800;line-height:1.2;margin-bottom:8px}
+.prog-header p{color:rgba(255,255,255,0.8);font-size:13px;line-height:1.65;max-width:540px}
+.age-pill{display:inline-block;background:#fff;font-size:11px;font-weight:700;padding:4px 14px;border-radius:20px;margin-top:14px;font-family:'Syne',sans-serif}
+.prog-body{max-width:900px;margin:0 auto;padding:36px 32px 48px}
+
+.activity-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:28px}
+.activity-card{border-radius:10px;padding:16px 18px}
+.activity-card .icon{font-size:24px;margin-bottom:10px}
+.activity-card h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;margin-bottom:6px}
+.activity-card p{font-size:12px;line-height:1.6}
+
+.theory-strip{border-radius:10px;padding:18px 22px;margin-bottom:24px}
+.theory-strip h4{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;margin-bottom:12px;letter-spacing:0.3px}
+.theory-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.theory-item .t-name{font-size:11px;font-weight:500;margin-bottom:4px}
+.theory-item p{font-size:11px;line-height:1.55}
+
+.outcomes-row{margin-bottom:24px}
+.outcomes-label{font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:12px}
+.outcomes-list{display:flex;flex-direction:column;gap:8px}
+.outcome-item{display:flex;align-items:flex-start;gap:10px;font-size:12.5px;color:#444441}
+.odot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:4px}
+
+.prog-footer-bar{display:flex;justify-content:space-between;align-items:center;border-top:0.5px solid var(--border);padding-top:18px}
+.prog-warf{font-family:'Syne',sans-serif;font-size:13px;font-weight:800}
+.prog-sub{font-size:10px;color:var(--mid)}
+.price-badge{font-size:12px;font-weight:500;padding:7px 18px;border-radius:20px;color:#fff}
+
+/* COLOR THEMES */
+.theme-green .prog-header{background:var(--green-dark)}
+.theme-green .age-pill{color:var(--green-dark)}
+.theme-green .activity-card{background:var(--green-light);border:0.5px solid #9FE1CB}
+.theme-green .activity-card h3{color:var(--forest-dark)}
+.theme-green .activity-card p{color:var(--green-dark)}
+.theme-green .theory-strip{background:var(--green-light);border-left:3px solid var(--green)}
+.theme-green .theory-strip h4,.theme-green .t-name{color:var(--forest-dark)}
+.theme-green .theory-item p{color:var(--green-dark)}
+.theme-green .odot{background:var(--green)}
+.theme-green .prog-warf{color:var(--green)}
+.theme-green .price-badge{background:var(--green)}
+
+.theme-blue .prog-header{background:var(--blue)}
+.theme-blue .age-pill{color:var(--blue)}
+.theme-blue .activity-card{background:var(--blue-light);border:0.5px solid #B5D4F4}
+.theme-blue .activity-card h3{color:var(--blue-dark)}
+.theme-blue .activity-card p{color:var(--blue)}
+.theme-blue .theory-strip{background:var(--blue-light);border-left:3px solid var(--blue)}
+.theme-blue .theory-strip h4,.theme-blue .t-name{color:var(--blue-dark)}
+.theme-blue .theory-item p{color:var(--blue)}
+.theme-blue .odot{background:var(--blue)}
+.theme-blue .prog-warf{color:var(--blue)}
+.theme-blue .price-badge{background:var(--blue)}
+
+.theme-purple .prog-header{background:var(--purple-dark)}
+.theme-purple .age-pill{color:var(--purple-dark)}
+.theme-purple .activity-card{background:var(--purple-light);border:0.5px solid #CECBF6}
+.theme-purple .activity-card h3{color:var(--purple-dark)}
+.theme-purple .activity-card p{color:var(--purple)}
+.theme-purple .theory-strip{background:var(--purple-light);border-left:3px solid var(--purple)}
+.theme-purple .theory-strip h4,.theme-purple .t-name{color:var(--purple-dark)}
+.theme-purple .theory-item p{color:var(--purple)}
+.theme-purple .odot{background:var(--purple)}
+.theme-purple .prog-warf{color:var(--purple)}
+.theme-purple .price-badge{background:var(--purple)}
+
+.theme-forest .prog-header{background:var(--forest)}
+.theme-forest .age-pill{color:var(--forest)}
+.theme-forest .activity-card{background:var(--forest-light);border:0.5px solid #C0DD97}
+.theme-forest .activity-card h3{color:var(--forest-dark)}
+.theme-forest .activity-card p{color:var(--forest)}
+.theme-forest .theory-strip{background:var(--forest-light);border-left:3px solid #639922}
+.theme-forest .theory-strip h4,.theme-forest .t-name{color:var(--forest-dark)}
+.theme-forest .theory-item p{color:var(--forest)}
+.theme-forest .odot{background:var(--forest)}
+.theme-forest .prog-warf{color:var(--forest)}
+.theme-forest .price-badge{background:var(--forest)}
+.theme-forest .cas-bar{background:var(--forest-dark);border-radius:8px;padding:10px 16px;display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.theme-forest .cas-bar p{font-size:12px;color:#C0DD97;line-height:1.5}
+.theme-forest .cas-badge{background:#639922;color:var(--forest-light);font-size:10px;font-weight:700;padding:3px 10px;border-radius:12px;white-space:nowrap;font-family:'Syne',sans-serif}
+
+.theme-amber .prog-header{background:var(--amber)}
+.theme-amber .age-pill{color:var(--amber)}
+.theme-amber .activity-card{background:var(--amber-light);border:0.5px solid #FAC775}
+.theme-amber .activity-card h3{color:var(--amber-dark)}
+.theme-amber .activity-card p{color:#854F0B}
+.theme-amber .activity-card.full{grid-column:1/-1}
+.theme-amber .theory-strip{background:var(--amber-light);border-left:3px solid #EF9F27}
+.theme-amber .theory-strip h4,.theme-amber .t-name{color:var(--amber-dark)}
+.theme-amber .theory-item p{color:#854F0B}
+.theme-amber .odot{background:var(--amber)}
+.theme-amber .prog-warf{color:var(--amber)}
+.theme-amber .price-badge{background:var(--amber)}
+
+/* PEDAGOGY PAGE */
+.pedagogy-page{border-top:0.5px solid var(--border)}
+.ped-header{background:var(--charcoal);padding:48px 32px 36px;position:relative;overflow:hidden}
+.ped-header::before{content:'';position:absolute;right:-50px;top:-50px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,0.04)}
+.ped-header .supertag{display:inline-block;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:10px;padding:3px 12px;border-radius:20px;margin-bottom:14px;letter-spacing:1.2px;text-transform:uppercase}
+.ped-header h2{font-family:'Syne',sans-serif;color:#fff;font-size:clamp(20px,3vw,28px);font-weight:800;line-height:1.25;margin-bottom:10px}
+.ped-header h2 em{color:#9FE1CB;font-style:normal}
+.ped-header p{color:rgba(255,255,255,0.65);font-size:13px;line-height:1.7;max-width:520px}
+.ped-body{max-width:900px;margin:0 auto;padding:36px 32px 48px}
+
+.pull-quote{border-left:2px solid var(--green);padding:14px 20px;margin-bottom:28px;background:var(--bg);border-radius:0 8px 8px 0}
+.pull-quote p{font-size:13.5px;color:var(--charcoal);line-height:1.7}
+.pull-quote p strong{color:var(--green-dark)}
+.pull-quote .source{font-size:10.5px;color:var(--mid);margin-top:6px;font-style:italic}
+
+.fw-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+.fw-card{border-radius:12px;overflow:hidden}
+.fw-head{padding:18px 20px 14px}
+.fw-tag{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:7px;opacity:0.7}
+.fw-head h3{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;line-height:1.2;margin-bottom:5px}
+.fw-ref{font-size:10.5px;opacity:0.65;font-style:italic;line-height:1.4}
+.fw-body{padding:14px 20px 18px}
+.fw-why{font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;font-weight:500;margin-bottom:9px}
+.fw-body ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.fw-body ul li{font-size:11.5px;line-height:1.55;padding-left:16px;position:relative}
+.fw-body ul li::before{content:'→';position:absolute;left:0;font-size:10px;top:2px;font-weight:500}
+
+.fw-pbe .fw-head{background:var(--green-dark)}
+.fw-pbe .fw-head *{color:var(--green-light)}
+.fw-pbe .fw-body{background:var(--green-light)}
+.fw-pbe .fw-why{color:var(--forest-dark)}
+.fw-pbe .fw-body ul li{color:var(--forest-dark)}
+.fw-pbe .fw-body ul li::before{color:var(--green)}
+
+.fw-kolb .fw-head{background:var(--blue)}
+.fw-kolb .fw-head *{color:var(--blue-light)}
+.fw-kolb .fw-body{background:var(--blue-light)}
+.fw-kolb .fw-why{color:var(--blue-dark)}
+.fw-kolb .fw-body ul li{color:var(--blue-dark)}
+.fw-kolb .fw-body ul li::before{color:#378ADD}
+
+.cycle-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:28px}
+.cycle-step{border-radius:10px;padding:14px 10px;text-align:center}
+.cycle-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:11px;font-weight:800;margin:0 auto 9px}
+.cycle-step h4{font-family:'Syne',sans-serif;font-size:10.5px;font-weight:700;margin-bottom:5px;line-height:1.25}
+.cycle-step p{font-size:10px;line-height:1.5}
+.cycle-eg{font-size:9.5px;margin-top:6px;font-style:italic;opacity:0.75}
+.cs1{background:#FAEEDA}.cs1 .cycle-num{background:#EF9F27;color:#fff}.cs1 h4{color:#633806}.cs1 p{color:#854F0B}
+.cs2{background:var(--forest-light)}.cs2 .cycle-num{background:#639922;color:#fff}.cs2 h4{color:var(--forest-dark)}.cs2 p{color:var(--forest)}
+.cs3{background:var(--blue-light)}.cs3 .cycle-num{background:#378ADD;color:#fff}.cs3 h4{color:var(--blue-dark)}.cs3 p{color:var(--blue)}
+.cs4{background:var(--purple-light)}.cs4 .cycle-num{background:#7F77DD;color:#fff}.cs4 h4{color:var(--purple-dark)}.cs4 p{color:var(--purple)}
+
+.act-map{background:var(--bg);border-radius:10px;padding:18px 22px;margin-bottom:24px}
+.act-map-label{font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);font-weight:500;margin-bottom:14px}
+.act-map-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.am-item{background:#fff;border:0.5px solid var(--border);border-radius:8px;padding:10px 12px}
+.am-group{font-size:9px;letter-spacing:0.8px;text-transform:uppercase;color:var(--mid);margin-bottom:4px}
+.am-name{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--charcoal);margin-bottom:3px}
+.am-how{font-size:10px;color:#5F5E5A;line-height:1.4}
+
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.stat-card{border:0.5px solid var(--border);border-radius:10px;padding:14px 16px;text-align:center}
+.stat-num{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--green);line-height:1}
+.stat-unit{font-size:9px;color:var(--mid);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.8px}
+.stat-desc{font-size:11px;color:#444441;line-height:1.45}
+
+/* LANG SWITCHER */
+.lang-switcher{display:flex;gap:6px;margin-left:auto;flex-shrink:0}
+.lang-btn{font-size:11px;padding:4px 12px;border-radius:12px;border:0.5px solid var(--border);cursor:pointer;background:none;color:var(--mid);transition:all .2s}
+.lang-btn.active{background:var(--charcoal);color:#fff;border-color:var(--charcoal)}
+
+/* FOOTER */
+.site-footer{background:var(--charcoal);padding:48px 32px;text-align:center}
+.sf-logo{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--green);margin-bottom:8px}
+.sf-sub{font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:20px}
+.sf-email{font-size:13px;color:rgba(255,255,255,0.7)}
+
+/* LANG TOGGLE */
+.th-only{display:block}
+.en-only{display:none}
+body.lang-en .th-only{display:none}
+body.lang-en .en-only{display:block}
+
+@media(max-width:600px){
+  .fw-grid,.two-col,.act-map-grid,.stat-row,.theory-cols,.cycle-grid{grid-template-columns:1fr}
+  .activity-grid{grid-template-columns:1fr}
+  nav{padding:0 16px}
+  .prog-header,.prog-body,.ped-header,.ped-body{padding-left:20px;padding-right:20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">WARF Ranong</div>
+    <div class="nav-links">
+      <button class="nav-btn active" onclick="scrollTo('hero')">Home</button>
+      <button class="nav-btn" onclick="scrollTo('thai-primary')">ประถมไทย</button>
+      <button class="nav-btn" onclick="scrollTo('thai-secondary')">มัธยมไทย</button>
+      <button class="nav-btn" onclick="scrollTo('intl-primary')">Intl Primary</button>
+      <button class="nav-btn" onclick="scrollTo('intl-secondary')">Intl Secondary</button>
+      <button class="nav-btn" onclick="scrollTo('family')">ครอบครัว</button>
+      <button class="nav-btn" onclick="scrollTo('pedagogy')">Our Approach</button>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btn-th" onclick="setLang('th')">TH</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="padding-top:56px">
+  <div class="hero">
+    <div class="hero-tag">Wild Animal Rescue Foundation of Thailand · Ban Thale Nok, Ranong</div>
+    <h1 class="th-only">ห้องเรียนที่ดีที่สุด<br><em>คือโลกความจริง</em></h1>
+    <h1 class="en-only">The best classroom<br><em>is the real world</em></h1>
+    <p class="th-only">โปรแกรมการเรียนรู้ 1 วัน ที่ศูนย์ฟื้นฟูสัตว์ป่าอันดามัน ออกแบบสำหรับนักเรียนและครอบครัว ที่หาไม่ได้จากห้องเรียนทั่วไป</p>
+    <p class="en-only">One-day educational programs at a real Andaman wildlife rescue centre — designed for students and families, built on internationally recognised learning frameworks.</p>
+    <div class="hero-cards">
+      <div class="hero-pill" onclick="scrollTo('thai-primary')">🟢 ประถมไทย</div>
+      <div class="hero-pill" onclick="scrollTo('thai-secondary')">🔵 มัธยมไทย</div>
+      <div class="hero-pill" onclick="scrollTo('intl-primary')">🟣 Intl Primary</div>
+      <div class="hero-pill" onclick="scrollTo('intl-secondary')">🌿 Intl Secondary</div>
+      <div class="hero-pill" onclick="scrollTo('family')">🟠 ครอบครัว</div>
+      <div class="hero-pill" onclick="scrollTo('pedagogy')">📚 Our Approach</div>
+    </div>
+  </div>
+</section>
+
+<!-- THAI PRIMARY -->
+<section id="thai-primary" class="program-page theme-green">
+  <div class="prog-header">
+    <div class="prog-tag">WARF Ranong · Day Program</div>
+    <h2 class="th-only">นักสืบสัตว์ป่า</h2>
+    <h2 class="en-only">Wildlife Investigator</h2>
+    <p class="th-only">สัมผัสวิทยาศาสตร์จริงในศูนย์ฟื้นฟูสัตว์ป่าอันดามัน ผ่านการลงมือทำที่หาไม่ได้จากห้องเรียนทั่วไป</p>
+    <p class="en-only">Real science at a real wildlife rescue centre — hands-on discovery that no classroom can replicate.</p>
+    <div class="age-pill th-only">นักเรียนไทย ประถมปลาย (ป.4–6)</div>
+    <div class="age-pill en-only">Thai Students · Upper Primary (Gr 4–6)</div>
+  </div>
+  <div class="prog-body">
+    <div class="outcomes-label">กิจกรรมหลัก / Core Activities</div>
+    <div class="activity-grid">
+      <div class="activity-card"><div class="icon">🚨</div><h3>Animal ER</h3><p class="th-only">จำลองห้องฉุกเฉินสัตว์ป่า รับบทเป็นทีมกู้ชีพ ตัดสินใจเหมือนหมอจริง</p><p class="en-only">Simulate a wildlife emergency room — make triage decisions like a real vet team.</p></div>
+      <div class="activity-card"><div class="icon">🔍</div><h3>Poop Detective</h3><p class="th-only">วิเคราะห์มูลสัตว์จริง บอกได้ว่ากินอะไร สุขภาพเป็นอย่างไร</p><p class="en-only">Analyse real animal scat to determine diet, health, and whether an animal was illegally kept.</p></div>
+      <div class="activity-card"><div class="icon">🍽️</div><h3>Kitchen for Wildlife</h3><p class="th-only">ทำ Enrichment ซ่อนอาหารให้สัตว์ในศูนย์ฟื้นฟู เรียนรู้พฤติกรรมการกิน</p><p class="en-only">Make enrichment feeders for rescue animals and observe real feeding behaviour.</p></div>
+      <div class="activity-card"><div class="icon">🌱</div><h3>Drone Re-Seed</h3><p class="th-only">ออกแบบ Seed Pod และใช้โดรนปล่อยในพื้นที่ฟื้นฟูป่า เรียนรู้ Nature-tech</p><p class="en-only">Design seed pods and use drones to reforest hard-to-reach areas — Nature-tech in action.</p></div>
+      <div class="activity-card"><div class="icon">🧪</div><h3>Bio-Circular Lab</h3><p class="th-only">ทำชุดกรองน้ำจิ๋วจากเปลือกปูและวัสดุทะเล ช่วยชีวิตสัตว์ในแหล่งน้ำเน่าเสีย</p><p class="en-only">Build a miniature bio-filter from crab shells and marine materials — real circular science.</p></div>
+    </div>
+    <div class="theory-strip">
+      <h4 class="th-only">รากฐานการเรียนรู้</h4><h4 class="en-only">Learning Frameworks</h4>
+      <div class="theory-cols">
+        <div class="theory-item"><div class="t-name">Place-Based Education (PBE)</div><p class="th-only">ป่าชายเลนและศูนย์ฟื้นฟูคือห้องเรียน ความรู้เกิดจากสถานที่จริง ไม่ใช่ตำรา</p><p class="en-only">The mangrove and rescue centre are the classroom — knowledge grows from real place, not textbooks.</p></div>
+        <div class="theory-item"><div class="t-name">Experiential Learning — Kolb</div><p class="th-only">สัมผัส → สะท้อนคิด → สรุปหลักการ → นำไปใช้จริง ครบ 4 ขั้นในวันเดียว</p><p class="en-only">Experience → Reflect → Conceptualise → Apply. Kolb's full cycle completed in one day.</p></div>
+      </div>
+    </div>
+    <div class="outcomes-row">
+      <div class="outcomes-label th-only">สิ่งที่เด็กจะได้กลับบ้าน</div>
+      <div class="outcomes-label en-only">What students take home</div>
+      <div class="outcomes-list">
+        <div class="outcome-item"><div class="odot"></div><span class="th-only">เข้าใจชีววิทยาและนิเวศวิทยาผ่านประสบการณ์ตรง ไม่ใช่การท่อง</span><span class="en-only">Biology and ecology understood through direct experience — not memorisation.</span></div>
+        <div class="outcome-item"><div class="odot"></div><span class="th-only">ฝึกทักษะการสังเกต ตั้งสมมติฐาน และสรุปผลแบบนักวิทยาศาสตร์</span><span class="en-only">Scientific observation, hypothesis-forming, and conclusion skills.</span></div>
+        <div class="outcome-item"><div class="odot"></div><span class="th-only">เกียรติบัตร + รายงานการเรียนรู้ส่งกลับโรงเรียน</span><span class="en-only">Certificate of participation + learning report for school.</span></div>
+      </div>
+    </div>
+    <div class="prog-footer-bar">
+      <div><div class="prog-warf">WARF Ranong</div><div class="prog-sub">Wild Animal Rescue Foundation · Ban Thale Nok</div></div>
+      <div class="price-badge th-only">บริจาค 500–800 บาท/คน</div>
+      <div class="price-badge en-only">Donation: 500–800 THB/student</div>
+    </div>
+  </div>
+</section>
+
+<!-- THAI SECONDARY -->
+<section id="thai-secondary" class="program-page theme-blue">
+  <div class="prog-header">
+    <div class="prog-tag">WARF Ranong · Day Program</div>
+    <h2 class="th-only">เบื้องหลังการอนุรักษ์</h2>
+    <h2 class="en-only">Behind the Conservation</h2>
+    <p class="th-only">สัมผัสกระบวนการตัดสินใจจริงของนักอนุรักษ์ และฝึกคิดวิเคราะห์เชิงระบบผ่านคดีสัตว์ป่าจริง</p>
+    <p class="en-only">Experience real conservation decision-making and develop systems thinking through actual wildlife cases.</p>
+    <div class="age-pill th-only">นักเรียนไทย มัธยม (ม.1–6)</div>
+    <div class="age-pill en-only">Thai Students · Secondary (Gr 7–12)</div>
+  </div>
+  <div class="prog-body">
+    <div class="outcomes-label">กิจกรรมหลัก / Core Activities</div>
+    <div class="activity-grid">
+      <div class="activity-card"><div class="icon">⚖️</div><h3>Wildlife Court</h3><p class="th-only">จำลองคดีสัตว์ป่าจาก case จริงของ WARF แบ่งเป็นอัยการ จำเลย และผู้พิพากษา</p><p class="en-only">Simulate a real WARF wildlife case — students play prosecutor, defendant, and judge.</p></div>
+      <div class="activity-card"><div class="icon">📊</div><h3>Rehab Score</h3><p class="th-only">ประเมินสัตว์ในศูนย์ฟื้นฟูจาก criteria จริงที่ vet ใช้ โหวตว่าพร้อมปล่อยป่าหรือยัง</p><p class="en-only">Score rescue animals using real vet criteria — vote on whether each animal is ready for release.</p></div>
+      <div class="activity-card"><div class="icon">🎮</div><h3>Wildlife Tycoon</h3><p class="th-only">บอร์ดเกมบริหารงบมูลนิธิ ตัดสินใจช่วยสัตว์ชนิดไหนก่อน จัดการ Human-Wildlife Conflict</p><p class="en-only">Board game: manage a foundation budget, prioritise species, resolve Human-Wildlife Conflicts.</p></div>
+      <div class="activity-card"><div class="icon">📱</div><h3>Campaign Creator</h3><p class="th-only">ออกแบบแคมเปญ Social Media หยุดค้าสัตว์ป่าผิดกฎหมาย จาก case จริงของ WARF</p><p class="en-only">Design a real social media campaign against illegal wildlife trade using WARF's actual cases.</p></div>
+    </div>
+    <div class="theory-strip">
+      <h4 class="th-only">รากฐานการเรียนรู้</h4><h4 class="en-only">Learning Frameworks</h4>
+      <div class="theory-cols">
+        <div class="theory-item"><div class="t-name">Place-Based Education (PBE)</div><p class="th-only">คดีและข้อมูลจริงจาก WARF ระนองคือจุดเริ่มต้น เชื่อมวิชาการกับปัญหาในพื้นที่จริง</p><p class="en-only">Real WARF cases from Ranong are the curriculum — connecting theory to local, consequential problems.</p></div>
+        <div class="theory-item"><div class="t-name">Experiential Learning — Kolb</div><p class="th-only">เรียนรู้ผ่านบทบาทสมมติ → สะท้อนคิด → สรุปหลักการกฎหมาย → นำเสนอทางออก</p><p class="en-only">Role play → Critical reflection → Legal/ethical principles → Propose real solutions.</p></div>
+      </div>
+    </div>
+    <div class="outcomes-row">
+      <div class="outcomes-label th-only">สิ่งที่เด็กจะได้กลับบ้าน</div>
+      <div class="outcomes-label en-only">What students take home</div>
+      <div class="outcomes-list">
+        <div class="outcome-item"><div class="odot"></div><span class="th-only">ฝึกการคิดวิเคราะห์เชิงระบบและการโต้เถียงด้วยข้อมูล</span><span class="en-only">Systems thinking and evidence-based argumentation skills.</span></div>
+        <div class="outcome-item"><div class="odot"></div><span class="th-only">เข้าใจกฎหมายคุ้มครองสัตว์ป่าและผลกระทบทางสังคม</span><span class="en-only">Understanding of wildlife law and its social consequences.</span></div>
+        <div class="outcome-item"><div class="odot"></div><span class="th-only">เกียรติบัตร + ผลงาน Campaign ส่งกลับโรงเรียนได้</span><span class="en-only">Certificate + Campaign project output for school portfolio.</span></div>
+      </div>
+    </div>
+    <div class="prog-footer-bar">
+      <div><div class="prog-warf">WARF Ranong</div><div class="prog-sub">Wild Animal Rescue Foundation · Ban Thale Nok</div></div>
+      <div class="price-badge th-only">บริจาค 600–1,000 บาท/คน</div>
+      <div class="price-badge en-only">Donation: 600–1,000 THB/student</div>
+    </div>
+  </div>
+</section>
+
+<!-- INTL PRIMARY -->
+<section id="intl-primary" class="program-page theme-purple">
+  <div class="prog-header">
+    <div class="prog-tag">WARF Ranong · International School Day Program</div>
+    <h2>Rescue File: Classified<br>Andaman Wildlife Discovery</h2>
+    <p>Hands-on conservation science at a real wildlife rescue centre. Designed for young global citizens and IB learners.</p>
+    <div class="age-pill" style="color:#3C3489">International Primary · Ages 9–12</div>
+  </div>
+  <div class="prog-body">
+    <div class="outcomes-label">Core Activities</div>
+    <div class="activity-grid">
+      <div class="activity-card"><div class="icon">🗂️</div><h3>Rescue File: Classified</h3><p>Receive a real animal's case file — no name revealed. Investigate clues and identify the species and rescue story.</p></div>
+      <div class="activity-card"><div class="icon">🔊</div><h3>Sound Map</h3><p>Walk the mangrove blindfolded. Map every sound heard onto paper — pure sensory science in a living ecosystem.</p></div>
+      <div class="activity-card"><div class="icon">📱</div><h3>Bio-Blitz Challenge</h3><p>Race to log the most species using iNaturalist. Build scientific vocabulary in a real Andaman ecosystem.</p></div>
+    </div>
+    <div class="theory-strip">
+      <h4>Learning Frameworks</h4>
+      <div class="theory-cols">
+        <div class="theory-item"><div class="t-name">Place-Based Education (PBE)</div><p>The Andaman mangrove and rescue centre are the classroom. Learning is rooted in this specific ecosystem and its real challenges.</p></div>
+        <div class="theory-item"><div class="t-name">Experiential Learning — Kolb's Cycle</div><p>Concrete experience → Reflective observation → Abstract conceptualisation → Active experimentation, completed in one day.</p></div>
+      </div>
+    </div>
+    <div class="outcomes-row">
+      <div class="outcomes-label">What students take home</div>
+      <div class="outcomes-list">
+        <div class="outcome-item"><div class="odot"></div><span>Scientific vocabulary and biodiversity observation skills via iNaturalist.</span></div>
+        <div class="outcome-item"><div class="odot"></div><span>Empathy for wildlife developed through real rescue stories.</span></div>
+        <div class="outcome-item"><div class="odot"></div><span>School impact report for sustainability and ESG documentation.</span></div>
+      </div>
+    </div>
+    <div class="prog-footer-bar">
+      <div><div class="prog-warf">WARF Ranong</div><div class="prog-sub">Wild Animal Rescue Foundation · Ban Thale Nok</div></div>
+      <div class="price-badge">Donation: 1,500–2,000 THB/student</div>
+    </div>
+  </div>
+</section>
+
+<!-- INTL SECONDARY -->
+<section id="intl-secondary" class="program-page theme-forest">
+  <div class="prog-header">
+    <div class="prog-tag">WARF Ranong · International School Day Program</div>
+    <h2>Conservation Science in Action<br>Release Decision &amp; Beyond</h2>
+    <p>Work with real data, real vets, and real conservation dilemmas. Designed for IB, CAS, and Global Citizenship portfolios.</p>
+    <div class="age-pill" style="color:#3B6D11">International Secondary · Ages 13–18</div>
+  </div>
+  <div class="prog-body">
+    <div class="outcomes-label">Core Activities</div>
+    <div class="activity-grid">
+      <div class="activity-card"><div class="icon">🦜</div><h3>Release Decision</h3><p>Use real vet data to debate and vote whether a live animal is ready for release. Vet team gives real-time feedback.</p></div>
+      <div class="activity-card"><div class="icon">💰</div><h3>Follow the Money</h3><p>Map the illegal wildlife trade supply chain using real case data from southern Thailand. Find weak links and propose solutions.</p></div>
+      <div class="activity-card"><div class="icon">🌊</div><h3>Blue Carbon Stock Market</h3><p>Survey real mangrove trees, calculate carbon sequestration, and convert to Carbon Credits — linked to Verra and T-VER.</p></div>
+      <div class="activity-card"><div class="icon">🤖</div><h3>AI Wildlife Patrol</h3><p>Train a Teachable Machine model on real camera trap images to distinguish wildlife, humans, and poachers.</p></div>
+    </div>
+    <div class="cas-bar">
+      <div class="cas-badge">IB · CAS · Service Learning</div>
+      <p>All activities generate documented outputs suitable for CAS portfolios, IB Extended Essay references, and school ESG reporting.</p>
+    </div>
+    <div class="theory-strip">
+      <h4>Learning Frameworks</h4>
+      <div class="theory-cols">
+        <div class="theory-item"><div class="t-name">Place-Based Education (PBE)</div><p>The Andaman coastline and WARF's active caseload are the curriculum. Every problem is real, local, and consequential.</p></div>
+        <div class="theory-item"><div class="t-name">Experiential Learning — Kolb's Cycle</div><p>Field data collection → Critical analysis → Systems thinking → Proposed interventions. Mirrors the professional conservation workflow.</p></div>
+      </div>
+    </div>
+    <div class="outcomes-row">
+      <div class="outcomes-label">What students take home</div>
+      <div class="outcomes-list">
+        <div class="outcome-item"><div class="odot"></div><span>Real conservation science methodology applicable to future academic work.</span></div>
+        <div class="outcome-item"><div class="odot"></div><span>Documented project outputs for CAS / service learning portfolio.</span></div>
+        <div class="outcome-item"><div class="odot"></div><span>School impact report for ESG and sustainability documentation.</span></div>
+      </div>
+    </div>
+    <div class="prog-footer-bar">
+      <div><div class="prog-warf">WARF Ranong</div><div class="prog-sub">Wild Animal Rescue Foundation · Ban Thale Nok</div></div>
+      <div class="price-badge">Donation: 2,000–3,000 THB/student</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAMILY -->
+<section id="family" class="program-page theme-amber">
+  <div class="prog-header">
+    <div class="prog-tag">WARF Ranong · Day Program</div>
+    <h2 class="th-only">Wild Family Day · วันผจญภัยของครอบครัว</h2>
+    <h2 class="en-only">Wild Family Day</h2>
+    <p class="th-only">กิจกรรมที่ทุกวัยทำร่วมกันได้ สร้างความทรงจำพิเศษผ่านประสบการณ์ที่หาไม่ได้จากสวนสัตว์ทั่วไป</p>
+    <p class="en-only">Activities every age can share — creating memories through experiences no zoo can offer.</p>
+    <div class="age-pill th-only">กลุ่มครอบครัว ทุกช่วงวัย</div>
+    <div class="age-pill en-only">Family Groups · All Ages Welcome</div>
+  </div>
+  <div class="prog-body">
+    <div class="outcomes-label">กิจกรรมหลัก / Core Activities</div>
+    <div class="activity-grid">
+      <div class="activity-card"><div class="icon">🐾</div><h3>Adopt for a Day</h3><p class="th-only">รับผิดชอบสัตว์ป่า 1 ตัวตลอดวัน เตรียมอาหาร เขียน daily log แบบ keeper จริง</p><p class="en-only">Take responsibility for one rescue animal all day — prepare food, write a daily log like a real keeper.</p></div>
+      <div class="activity-card"><div class="icon">🔦</div><h3>Midnight Rescue Simulation</h3><p class="th-only">จำลองภารกิจกู้ชีพ ใช้ไฟฉายสีแดง ตามหาสัตว์จำลองและทำการปฐมพยาบาล</p><p class="en-only">Simulate a night rescue mission — use red torches to find a sensor animal and perform first aid.</p></div>
+      <div class="activity-card"><div class="icon">🍳</div><h3>Invasive Species Kitchen</h3><p class="th-only">ทำอาหารจากสิ่งมีชีวิตต่างถิ่น เช่น หอยเชอรี่ เรียนรู้ conservation ผ่านการกิน</p><p class="en-only">Cook with invasive species — learn ecosystem balance through the most memorable medium: food.</p></div>
+      <div class="activity-card"><div class="icon">🔎</div><h3>Family Forensics</h3><p class="th-only">ไขปริศนาว่าสัตว์มาที่ WARF ได้อย่างไร รวบรวมหลักฐานทั่วศูนย์ฯ แบบ escape room</p><p class="en-only">Solve how an animal ended up at WARF — gather clues around the centre like a real escape room.</p></div>
+      <div class="activity-card full"><div class="icon">📡</div><h3>Smart Nest Box</h3><p class="th-only">ประกอบกล่องรังนกติดกล้อง IoT กลับบ้าน เฝ้าดูสัตว์เมืองผ่านมือถือได้ในระยะยาว</p><p class="en-only">Build an IoT-enabled nest box to take home — watch urban wildlife through your phone long after the visit.</p></div>
+    </div>
+    <div class="theory-strip">
+      <h4 class="th-only">รากฐานการเรียนรู้</h4><h4 class="en-only">Learning Frameworks</h4>
+      <div class="theory-cols">
+        <div class="theory-item"><div class="t-name">Place-Based Education (PBE)</div><p class="th-only">ป่าและศูนย์ฟื้นฟูคือพื้นที่เรียนรู้ที่มีความหมาย เชื่อมโยงครอบครัวกับชุมชนและระบบนิเวศท้องถิ่น</p><p class="en-only">Forest and rescue centre as meaningful learning space — connecting families to local community and ecosystem.</p></div>
+        <div class="theory-item"><div class="t-name">Experiential Learning — Kolb</div><p class="th-only">ทดลองทำจริงด้วยกัน → พูดคุยสิ่งที่เจอ → เข้าใจหลักการ → เอากลับไปทำต่อที่บ้าน</p><p class="en-only">Do together → Discuss → Understand principles → Continue at home with Smart Nest Box.</p></div>
+      </div>
+    </div>
+    <div class="outcomes-row">
+      <div class="outcomes-label th-only">สิ่งที่ครอบครัวจะได้กลับบ้าน</div>
+      <div class="outcomes-label en-only">What families take home</div>
+      <div class="outcomes-list">
+        <div class="outcome-item"><div class="odot"></div><span class="th-only">ความทรงจำร่วมกันที่หาไม่ได้จากสวนสัตว์หรือค่ายทั่วไป</span><span class="en-only">Shared memories no zoo or standard camp can create.</span></div>
+        <div class="outcome-item"><div class="odot"></div><span class="th-only">Smart Nest Box พร้อมกล้อง IoT สำหรับติดตั้งที่บ้าน</span><span class="en-only">Smart Nest Box with IoT camera — conservation continues at home.</span></div>
+        <div class="outcome-item"><div class="odot"></div><span class="th-only">รูปถ่ายพร้อมสัตว์ป่า + ใบเสร็จเพื่อลดหย่อนภาษีได้</span><span class="en-only">Photo with rescue animals + donation receipt for tax deduction (Thailand).</span></div>
+      </div>
+    </div>
+    <div class="prog-footer-bar">
+      <div><div class="prog-warf">WARF Ranong</div><div class="prog-sub">Wild Animal Rescue Foundation · Ban Thale Nok</div></div>
+      <div class="price-badge th-only">บริจาค 800–1,200 บาท/ครอบครัว</div>
+      <div class="price-badge en-only">Donation: 800–1,200 THB/family</div>
+    </div>
+  </div>
+</section>
+
+<!-- PEDAGOGY -->
+<section id="pedagogy" class="pedagogy-page">
+  <div class="ped-header">
+    <div class="supertag th-only">WARF Ranong · แนวทางการเรียนรู้ของเรา</div>
+    <div class="supertag en-only">WARF Ranong · Our Educational Approach</div>
+    <h2 class="th-only">ทำไมเด็กถึงเรียนรู้ได้ดีที่สุด<br><em>เมื่อสถานที่จริงคือห้องเรียน</em></h2>
+    <h2 class="en-only">Why children learn best when<br><em>the real world is the classroom</em></h2>
+    <p class="th-only">ทุกกิจกรรมของ WARF ออกแบบบนฐานทฤษฎีการศึกษาระดับสากล เพื่อให้การเรียนรู้ที่เกิดขึ้นวันนั้น ติดตัวเด็กไปตลอดชีวิต</p>
+    <p class="en-only">Every WARF program is built on two globally recognised educational frameworks — so that what children experience here stays with them long after they leave.</p>
+  </div>
+  <div class="ped-body">
+    <div class="pull-quote">
+      <p class="th-only">การวิจัยด้านจิตวิทยาการศึกษาพบว่าเด็กจดจำสิ่งที่ <strong>ลงมือทำด้วยตัวเอง</strong> ได้มากกว่าการฟังบรรยายถึง <strong>75%</strong> และการเรียนรู้ที่ผูกกับ <strong>สถานที่และบริบทจริง</strong> สร้างการเชื่อมโยงในสมองที่แน่นแฟ้นและยาวนานกว่าห้องเรียนปกติ</p>
+      <p class="en-only">Research shows children retain <strong>up to 75% more</strong> when they learn by doing — and that learning anchored to <strong>real places and real problems</strong> builds deeper, more durable understanding than classroom instruction alone.</p>
+      <div class="source">National Training Laboratories · Kolb, D.A. (1984) · Sobel, D. (1996)</div>
+    </div>
+    <div class="fw-grid">
+      <div class="fw-card fw-pbe">
+        <div class="fw-head">
+          <div class="fw-tag">Framework 01</div>
+          <h3>Place-Based<br>Education (PBE)</h3>
+          <div class="fw-ref">David Sobel, 1996 · IB World Schools, Waldorf, Reggio Emilia</div>
+        </div>
+        <div class="fw-body">
+          <div class="fw-why th-only">ทำไมถึงสำคัญกับลูกของคุณ</div>
+          <div class="fw-why en-only">Why it matters for your child</div>
+          <ul>
+            <li class="th-only">เด็กมีส่วนร่วมมากขึ้นเมื่อปัญหาที่เรียนคือปัญหาจริงในท้องถิ่น ไม่ใช่สมมติในตำรา</li>
+            <li class="en-only">Children engage more deeply when the problem they study is real and local — not a textbook hypothetical.</li>
+            <li class="th-only">การผูกกับสถานที่สร้าง "environmental identity" รากฐานของจิตสำนึกสิ่งแวดล้อมตลอดชีวิต</li>
+            <li class="en-only">Connecting to place builds "environmental identity" — the foundation of lifelong ecological awareness.</li>
+            <li class="th-only">PBE ช่วยเพิ่มแรงจูงใจ ความรับผิดชอบต่อชุมชน และทักษะความร่วมมือ</li>
+            <li class="en-only">PBE improves academic motivation, community responsibility, and collaboration skills.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fw-card fw-kolb">
+        <div class="fw-head">
+          <div class="fw-tag">Framework 02</div>
+          <h3>Experiential<br>Learning — Kolb</h3>
+          <div class="fw-ref">David Kolb, 1984 · basis of IB CAS, Service Learning, PBL</div>
+        </div>
+        <div class="fw-body">
+          <div class="fw-why th-only">ทำไมถึงสำคัญกับลูกของคุณ</div>
+          <div class="fw-why en-only">Why it matters for your child</div>
+          <ul>
+            <li class="th-only">การเรียนรู้ที่สมบูรณ์ต้องผ่าน 4 ขั้น ไม่ใช่แค่รับข้อมูลแบบ passive</li>
+            <li class="en-only">True learning requires completing a full 4-stage cycle — not just passively receiving information.</li>
+            <li class="th-only">เด็กที่ผ่านวงจร Kolb พัฒนา critical thinking และ problem-solving ได้เร็วกว่า</li>
+            <li class="en-only">Children who move through Kolb's cycle develop stronger critical thinking and transferable skills.</li>
+            <li class="th-only">เป็นพื้นฐานของ IB CAS, Project-Based Learning และ Service Learning สากล</li>
+            <li class="en-only">It underpins IB's CAS framework, Project-Based Learning, and Service Learning globally.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="outcomes-label th-only">วงจร Kolb ในทุกกิจกรรมของ WARF</div>
+    <div class="outcomes-label en-only">How Kolb's cycle runs through every WARF activity</div>
+    <div class="cycle-grid" style="margin-bottom:28px">
+      <div class="cycle-step cs1"><div class="cycle-num">1</div><h4>Concrete Experience</h4><p class="th-only">ลงมือทำจริง เช่น วิเคราะห์มูล ฝึก AI ประเมินสัตว์ป่า</p><p class="en-only">Do something real — analyse scat, train AI, evaluate rehab data</p><div class="cycle-eg">Animal ER, AI Wildlife Patrol</div></div>
+      <div class="cycle-step cs2"><div class="cycle-num">2</div><h4>Reflective Observation</h4><p class="th-only">ตั้งคำถาม สะท้อนคิด อะไรที่สังเกตได้ อะไรที่แปลกใจ</p><p class="en-only">Pause and question — what did I notice? What surprised me?</p><div class="cycle-eg">Sound Map, Rescue File debrief</div></div>
+      <div class="cycle-step cs3"><div class="cycle-num">3</div><h4>Abstract Conceptualisation</h4><p class="th-only">เชื่อมกับหลักการ เช่น กฎหมาย ระบบนิเวศ ตลาดคาร์บอน</p><p class="en-only">Connect to principles — wildlife law, carbon markets, ecosystem</p><div class="cycle-eg">Blue Carbon Market, Wildlife Court</div></div>
+      <div class="cycle-step cs4"><div class="cycle-num">4</div><h4>Active Experimentation</h4><p class="th-only">นำไปใช้ต่อ เช่น เสนอแผน สร้างแคมเปญ ออกแบบโซลูชัน</p><p class="en-only">Apply and create — propose plans, build campaigns, design solutions</p><div class="cycle-eg">Campaign Creator, Release Decision</div></div>
+    </div>
+    <div class="act-map">
+      <div class="act-map-label th-only">กิจกรรม WARF ที่ขับเคลื่อนด้วยทั้งสองทฤษฎี</div>
+      <div class="act-map-label en-only">WARF activities powered by both frameworks</div>
+      <div class="act-map-grid">
+        <div class="am-item"><div class="am-group">Thai Primary</div><div class="am-name">Animal ER</div><div class="am-how">Real rescue centre + triage decisions</div></div>
+        <div class="am-item"><div class="am-group">Thai Secondary</div><div class="am-name">Wildlife Court</div><div class="am-how">Real case files + systems thinking</div></div>
+        <div class="am-item"><div class="am-group">Intl Secondary</div><div class="am-name">Release Decision</div><div class="am-how">Live animal data + CAS portfolio</div></div>
+        <div class="am-item"><div class="am-group">Intl Secondary</div><div class="am-name">Blue Carbon Market</div><div class="am-how">Real mangrove + Verra standards</div></div>
+        <div class="am-item"><div class="am-group">Intl Primary</div><div class="am-name">Sound Map</div><div class="am-how">Live ecosystem + sensory science</div></div>
+        <div class="am-item"><div class="am-group">Family</div><div class="am-name">Smart Nest Box</div><div class="am-how">Build real IoT + continue at home</div></div>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-card"><div class="stat-num">75%</div><div class="stat-unit">retention rate</div><div class="stat-desc th-only">จากการลงมือทำ vs 5% จากการฟังบรรยาย</div><div class="stat-desc en-only">from learning by doing vs 5% from lecture alone</div></div>
+      <div class="stat-card"><div class="stat-num">2×</div><div class="stat-unit">motivation</div><div class="stat-desc th-only">เมื่อเรียนจากบริบทท้องถิ่นจริง (PBE research)</div><div class="stat-desc en-only">when learning connects to real local context (PBE research)</div></div>
+      <div class="stat-card"><div class="stat-num">IB</div><div class="stat-unit">CAS-aligned</div><div class="stat-desc th-only">ทุกโปรแกรม Secondary สร้าง output สำหรับ CAS portfolio</div><div class="stat-desc en-only">all secondary programs generate documented CAS portfolio outputs</div></div>
+    </div>
+    <div class="prog-footer-bar">
+      <div><div class="prog-warf" style="color:var(--green);font-family:'Syne',sans-serif;font-size:13px;font-weight:800">WARF Ranong</div><div class="prog-sub">Wild Animal Rescue Foundation of Thailand · Ban Thale Nok</div></div>
+      <div style="font-size:11px;color:var(--mid);text-align:right;line-height:1.6">Educational programs enquiry<br>warf.thailand@gmail.com</div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="sf-logo">WARF Ranong</div>
+  <div class="sf-sub">Wild Animal Rescue Foundation of Thailand · Ban Thale Nok, Ranong</div>
+  <div class="sf-email">warf.thailand@gmail.com</div>
+</footer>
+
+<script>
+function scrollTo(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+function setLang(lang){
+  document.body.className = lang==='en'?'lang-en':'';
+  document.getElementById('btn-th').classList.toggle('active',lang==='th');
+  document.getElementById('btn-en').classList.toggle('active',lang==='en');
+}
+const sections=['hero','thai-primary','thai-secondary','intl-primary','intl-secondary','family','pedagogy'];
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const idx=sections.indexOf(e.target.id);
+      document.querySelectorAll('.nav-btn').forEach((b,i)=>{b.classList.toggle('active',i===idx)});
+    }
+  });
+},{threshold:0.3});
+sections.forEach(id=>{const el=document.getElementById(id);if(el)observer.observe(el)});
+</script>
+</body>
+</html>

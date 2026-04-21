@@ -1,0 +1,223 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Syne:wght@700;800&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.page{background:#fff;max-width:680px;font-family:'DM Sans',sans-serif}
+
+.header{background:#2C2C2A;padding:32px 36px 26px;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;right:-50px;top:-50px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,0.04)}
+.header::after{content:'';position:absolute;left:80px;bottom:-90px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.03)}
+.supertag{display:inline-block;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:10px;padding:3px 12px;border-radius:20px;margin-bottom:14px;letter-spacing:1.2px;text-transform:uppercase}
+.header h1{font-family:'Syne',sans-serif;color:#fff;font-size:24px;font-weight:800;line-height:1.25;margin-bottom:10px}
+.header h1 em{color:#9FE1CB;font-style:normal}
+.header .subtitle{color:rgba(255,255,255,0.65);font-size:12.5px;line-height:1.7;max-width:520px}
+
+.body{padding:28px 36px}
+
+.pull-quote{border-left:2px solid #1D9E75;padding:12px 18px;margin-bottom:26px;background:#F1EFE8;border-radius:0 8px 8px 0}
+.pull-quote p{font-size:13.5px;color:#2C2C2A;line-height:1.7}
+.pull-quote p strong{color:#0F6E56}
+.pull-quote .source{font-size:10.5px;color:#888780;margin-top:6px;font-style:italic}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+
+.framework-card{border-radius:12px;overflow:hidden}
+.fc-header{padding:18px 20px 14px}
+.fc-tag{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:7px;opacity:0.7;font-family:'DM Sans',sans-serif}
+.fc-header h2{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;line-height:1.2;margin-bottom:5px}
+.fc-ref{font-size:10.5px;opacity:0.65;line-height:1.4;font-style:italic}
+.fc-body{padding:14px 20px 18px}
+.why-label{font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;font-weight:500;margin-bottom:9px}
+.fc-body ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.fc-body ul li{font-size:11.5px;line-height:1.55;padding-left:16px;position:relative}
+.fc-body ul li::before{content:'→';position:absolute;left:0;font-size:10px;top:2px;font-weight:500}
+
+.pbe-card .fc-header{background:#0F6E56}
+.pbe-card .fc-header *{color:#E1F5EE}
+.pbe-card .fc-body{background:#E1F5EE}
+.pbe-card .fc-body .why-label{color:#085041}
+.pbe-card .fc-body ul li{color:#085041}
+.pbe-card .fc-body ul li::before{color:#1D9E75}
+
+.kolb-card .fc-header{background:#185FA5}
+.kolb-card .fc-header *{color:#E6F1FB}
+.kolb-card .fc-body{background:#E6F1FB}
+.kolb-card .fc-body .why-label{color:#0C447C}
+.kolb-card .fc-body ul li{color:#0C447C}
+.kolb-card .fc-body ul li::before{color:#378ADD}
+
+.section-label{font-size:9.5px;letter-spacing:1.5px;color:#888780;font-weight:500;text-transform:uppercase;margin-bottom:14px}
+
+.cycle-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:6px}
+.cycle-step{border-radius:10px;padding:14px 10px;text-align:center}
+.cycle-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:11px;font-weight:800;margin:0 auto 9px}
+.cycle-step h4{font-family:'Syne',sans-serif;font-size:10.5px;font-weight:700;margin-bottom:5px;line-height:1.25}
+.cycle-step p{font-size:10px;line-height:1.5}
+.warf-example{font-size:9.5px;margin-top:6px;font-style:italic;opacity:0.75}
+
+.s1{background:#FAEEDA}.s1 .cycle-num{background:#EF9F27;color:#fff}.s1 h4{color:#633806}.s1 p{color:#854F0B}
+.s2{background:#EAF3DE}.s2 .cycle-num{background:#639922;color:#fff}.s2 h4{color:#27500A}.s2 p{color:#3B6D11}
+.s3{background:#E6F1FB}.s3 .cycle-num{background:#378ADD;color:#fff}.s3 h4{color:#0C447C}.s3 p{color:#185FA5}
+.s4{background:#EEEDFE}.s4 .cycle-num{background:#7F77DD;color:#fff}.s4 h4{color:#3C3489}.s4 p{color:#534AB7}
+
+.activity-map{background:#F1EFE8;border-radius:10px;padding:18px 20px;margin-top:20px;margin-bottom:22px}
+.activity-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.act-item{background:#fff;border:0.5px solid #D3D1C7;border-radius:8px;padding:10px 12px}
+.act-group{font-size:9px;letter-spacing:0.8px;text-transform:uppercase;color:#888780;margin-bottom:4px}
+.act-name{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:#2C2C2A;margin-bottom:3px}
+.act-how{font-size:10px;color:#5F5E5A;line-height:1.4}
+.act-dot{display:inline-block;width:5px;height:5px;border-radius:50%;margin-right:4px;vertical-align:middle;position:relative;top:-1px}
+
+.outcome-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:22px}
+.outcome-card{border:0.5px solid #D3D1C7;border-radius:10px;padding:12px 14px;text-align:center}
+.outcome-num{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#1D9E75;line-height:1}
+.outcome-unit{font-size:9px;color:#888780;margin-bottom:4px}
+.outcome-desc{font-size:11px;color:#444441;line-height:1.45}
+
+.footer{border-top:0.5px solid #D3D1C7;padding-top:16px;display:flex;justify-content:space-between;align-items:center}
+.warf-logo{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;color:#1D9E75}
+.warf-sub{font-size:10px;color:#888780;margin-top:2px}
+.footer-right{font-size:11px;color:#888780;text-align:right;line-height:1.6}
+</style>
+
+<div class="page">
+  <div class="header">
+    <div class="supertag">WARF Ranong · Our Educational Approach</div>
+    <h1>Why children learn best when<br><em>the real world is the classroom</em></h1>
+    <div class="subtitle">Every WARF program is built on two globally recognised educational frameworks — so that what children experience here stays with them long after they leave.</div>
+  </div>
+
+  <div class="body">
+    <div class="pull-quote">
+      <p>Research in cognitive science consistently shows that children retain <strong>up to 75% more</strong> when they learn by doing — and that learning anchored to <strong>real places and real problems</strong> builds deeper, more durable understanding than classroom instruction alone.</p>
+      <div class="source">National Training Laboratories, Bethel Maine · Kolb, D.A. (1984) · Sobel, D. (1996)</div>
+    </div>
+
+    <div class="two-col">
+      <div class="framework-card pbe-card">
+        <div class="fc-header">
+          <div class="fc-tag">Framework 01</div>
+          <h2>Place-Based<br>Education (PBE)</h2>
+          <div class="fc-ref">David Sobel, 1996 · adopted by leading international schools globally</div>
+        </div>
+        <div class="fc-body">
+          <div class="why-label">Why it matters for your child</div>
+          <ul>
+            <li>Children engage more deeply when the problem they are studying is real and local — not a hypothetical in a textbook</li>
+            <li>Connecting to place builds "environmental identity" — the foundation of lifelong ecological awareness</li>
+            <li>PBE has been shown to improve academic motivation, collaboration, and community responsibility</li>
+            <li>Used by IB World Schools, Waldorf, Reggio Emilia and Nature Kindergarten programmes worldwide</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="framework-card kolb-card">
+        <div class="fc-header">
+          <div class="fc-tag">Framework 02</div>
+          <h2>Experiential<br>Learning — Kolb</h2>
+          <div class="fc-ref">David Kolb, 1984 · the basis of IB CAS, Service Learning and PBL</div>
+        </div>
+        <div class="fc-body">
+          <div class="why-label">Why it matters for your child</div>
+          <ul>
+            <li>True learning requires completing a full cycle — not just receiving information passively</li>
+            <li>Children who move through Kolb's four stages develop stronger critical thinking and transferable skills</li>
+            <li>It underpins IB's Creativity, Activity, Service (CAS) framework and Project-Based Learning</li>
+            <li>Actively used by top universities to assess readiness for real-world problem solving</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">How Kolb's cycle runs through every WARF activity</div>
+    <div class="cycle-row">
+      <div class="cycle-step s1">
+        <div class="cycle-num">1</div>
+        <h4>Concrete Experience</h4>
+        <p>Do something real — analyse scat, train AI, evaluate a live animal's rehab data</p>
+        <div class="warf-example">e.g. Animal ER, AI Wildlife Patrol</div>
+      </div>
+      <div class="cycle-step s2">
+        <div class="cycle-num">2</div>
+        <h4>Reflective Observation</h4>
+        <p>Pause and question — what did I notice? What surprised me? What do I still not know?</p>
+        <div class="warf-example">e.g. Sound Map, Rescue File debrief</div>
+      </div>
+      <div class="cycle-step s3">
+        <div class="cycle-num">3</div>
+        <h4>Abstract Conceptualisation</h4>
+        <p>Connect to principles — wildlife law, carbon markets, ecosystem balance, global frameworks</p>
+        <div class="warf-example">e.g. Blue Carbon Market, Wildlife Court</div>
+      </div>
+      <div class="cycle-step s4">
+        <div class="cycle-num">4</div>
+        <h4>Active Experimentation</h4>
+        <p>Apply and create — propose a plan, build a campaign, design a solution to take forward</p>
+        <div class="warf-example">e.g. Campaign Creator, Release Decision</div>
+      </div>
+    </div>
+
+    <div class="activity-map">
+      <div class="section-label">Framework in action — selected WARF activities</div>
+      <div class="activity-grid">
+        <div class="act-item">
+          <div class="act-group">Thai Primary</div>
+          <div class="act-name">Animal ER</div>
+          <div class="act-how">Real rescue centre + hands-on triage decisions</div>
+        </div>
+        <div class="act-item">
+          <div class="act-group">Thai Secondary</div>
+          <div class="act-name">Wildlife Court</div>
+          <div class="act-how">Real case files + systems-level analysis</div>
+        </div>
+        <div class="act-item">
+          <div class="act-group">Intl Secondary</div>
+          <div class="act-name">Release Decision</div>
+          <div class="act-how">Live animal data + CAS portfolio output</div>
+        </div>
+        <div class="act-item">
+          <div class="act-group">Intl Secondary</div>
+          <div class="act-name">Blue Carbon Market</div>
+          <div class="act-how">Real mangrove + Verra / T-VER standards</div>
+        </div>
+        <div class="act-item">
+          <div class="act-group">Intl Primary</div>
+          <div class="act-name">Sound Map</div>
+          <div class="act-how">Live ecosystem + sensory-based science</div>
+        </div>
+        <div class="act-item">
+          <div class="act-group">Family</div>
+          <div class="act-name">Smart Nest Box</div>
+          <div class="act-how">Build real IoT device + continue at home</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">What the research says students gain</div>
+    <div class="outcome-row">
+      <div class="outcome-card">
+        <div class="outcome-num">75%</div>
+        <div class="outcome-unit">retention rate</div>
+        <div class="outcome-desc">from learning by doing vs. 5% from lecture alone</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">2×</div>
+        <div class="outcome-unit">motivation increase</div>
+        <div class="outcome-desc">when learning is connected to a real local context (PBE research)</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">IB</div>
+        <div class="outcome-unit">CAS-aligned</div>
+        <div class="outcome-desc">all secondary programs generate documented outputs for CAS portfolios</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>
+        <div class="warf-logo">WARF Ranong</div>
+        <div class="warf-sub">Wild Animal Rescue Foundation of Thailand · Ban Thale Nok</div>
+      </div>
+      <div class="footer-right">Educational programs enquiry<br>warf.thailand@gmail.com</div>
+    </div>
+  </div>
+</div>
